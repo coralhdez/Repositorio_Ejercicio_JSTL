@@ -19,11 +19,11 @@
         <!-- AÑADIMOS UN FLAG PARA INCLUIR CÓDIGO CONDICIONAL -->
         <c:set var="flag" value="true" />
         
-        <c:if test="$(flag)">
+        <c:if test="${flag}">
             El flag es verdadero
         </c:if>
         <!--COMPROBAMOS EL VALOR DEL PARÁMETOR OPCION QUE NOS HAN APSADO POR URL-->
-        <c:if test="${param.opcion} != null">
+        <c:if test="${param.opcion != null}">
             <c:choose>
                 <c:when test="${param.opcion == 1}">
                     </br>
@@ -39,5 +39,18 @@
                 </c:otherwise>    
             </c:choose>
         </c:if>
+                    <!--VAMOS A TRABAJAR CON UN WARRY DE ELEMENTOS -->
+        <%
+            String nombres[] = {"Luis", "Marta", "Lucía"};
+            request.setAttribute("nombres", nombres);
+        %>   
+        </br><!-- comment -->
+        <!--LISTAMOS LOS NOMBRES -->
+        <ul>
+            <c:forEach var="persona" items="${nombres}">
+                <li>Nombre: ${persona}</li>
+            </c:forEach>
+                
+        </ul>
     </body>
 </html>
